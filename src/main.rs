@@ -6,7 +6,7 @@ fn main() {
     println!("Привет, это угадайка!");
 
     let guessed_number = rand::thread_rng().gen_range(1..=100);
-    let mut attempts: i32 = 0;
+    let mut attempts: i32 = 1;
 
     loop {
         println!("Введите число: ");
