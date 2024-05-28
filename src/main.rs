@@ -1,5 +1,6 @@
 use std::io;
 use rand::Rng;
+use std::cmp::Ordering;
 
 fn main() {
     println!("Привет, это угадайка!");
@@ -15,5 +16,11 @@ fn main() {
         .read_line(&mut guess)
         .expect("Ошибка при чтении строки");
 
-    println!("Вы ввели число: {guess}");
+    let guess: i32 = guess.trim().parse().expect("Вы ввели не число!");
+
+    match guess.cmp(&guessed_number){
+        Ordering::Less => println!("Слишком маленькое число!"),
+        Ordering::Equal => println!("Вы угадали!!!"),
+        Ordering::Greater => println!("Слишком большое число!"),
+    }
 }
