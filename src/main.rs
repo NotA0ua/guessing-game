@@ -6,6 +6,7 @@ fn main() {
     println!("Привет, это угадайка!");
 
     let guessed_number = rand::thread_rng().gen_range(1..=100);
+    let mut attempts: i32 = 0;
 
     loop {
         println!("Введите число: ");
@@ -29,8 +30,10 @@ fn main() {
             Ordering::Greater => println!("Слишком большое число!"),
             Ordering::Equal => {
                 println!("Вы угадали!!!");
+                println!("На угадывание ушло {attempts} попыток.");
                 break;
             }
         }
+        attempts += 1;
     }
 }
